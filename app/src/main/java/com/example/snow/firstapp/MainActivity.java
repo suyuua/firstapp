@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
@@ -17,13 +20,16 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditText;
     private Button mButton;
     TextView answer, question;
-    EditText editQuestion;
+    EditText editQuestion, addItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final ArrayList items = new ArrayList();
+        items.add("Yes");
+        items.add("No");
 
         answer = (TextView) findViewById(R.id.answer);
 
@@ -31,13 +37,7 @@ public class MainActivity extends AppCompatActivity {
         ask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Random a = new Random();
-                if (a.nextBoolean()){
-                    answer.setText("Yes");
-                }else {
-                    answer.setText("No");
-                }
-
+                answer.setText(items.get((new Random()).nextInt(items.size())).toString());
             }
         });
 
@@ -53,8 +53,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        addItems = (EditText) findViewById(R.id.items);
+        Button add = (Button) findViewById(R.id.addItems);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String item = addItems.getText().toString();
+                items.add(item);
+            }
+        });
 
-
+        Button clear = (Button) findViewById(R.id.clear);
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                items.clear();
+                items.add("Yes");
+                items.add("No");
+            }
+        });
 
 
 

@@ -8,25 +8,59 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.Random;
 public class MainActivity extends AppCompatActivity {
+
+
+    private LinearLayout mLayout;
+    private EditText mEditText;
+    private Button mButton;
+    TextView txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+
+        txt = (TextView) findViewById(R.id.answer);
+
+        Button ask = (Button) findViewById(R.id.askQuestion);
+        ask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Random a = new Random();
+                if (a.nextBoolean()){
+                    txt.setText("Yes");
+                }else {
+                    txt.setText("No");
+                }
+
             }
         });
+
+
+
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

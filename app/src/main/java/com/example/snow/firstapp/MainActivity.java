@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout mLayout;
     private EditText mEditText;
-    private Button mButton;
+    private Button ask,submitQ, add, clear;
     TextView answer, question;
     EditText editQuestion, addItems;
 
@@ -32,8 +32,14 @@ public class MainActivity extends AppCompatActivity {
         items.add("No");
 
         answer = (TextView) findViewById(R.id.answer);
+        question = (TextView) findViewById(R.id.question);
+        ask = (Button) findViewById(R.id.askQuestion);
+        submitQ = (Button) findViewById(R.id.submitQ);
+        add = (Button) findViewById(R.id.addItems);
+        clear = (Button) findViewById(R.id.clear);
+        editQuestion = (EditText) findViewById(R.id.changeQuestion);
+        addItems = (EditText) findViewById(R.id.items);
 
-        Button ask = (Button) findViewById(R.id.askQuestion);
         ask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,9 +47,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        question = (TextView) findViewById(R.id.question);
-        editQuestion = (EditText) findViewById(R.id.changeQuestion);
-        Button submitQ = (Button) findViewById(R.id.submitQ);
+
+
         submitQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        addItems = (EditText) findViewById(R.id.items);
-        Button add = (Button) findViewById(R.id.addItems);
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button clear = (Button) findViewById(R.id.clear);
+
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,22 +99,31 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
+    boolean toogle = false;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
         switch (id) {
             case R.id.action_settings:
                 // User chose the "Settings" item, show the app settings UI...
                 return true;
 
-            case R.id.myQuestion:
+            case R.id.resetQuestion:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
-                answer = (TextView) findViewById(R.id.question);
-                answer.setText("heelo?");
+                question = (TextView) findViewById(R.id.question);
+                return true;
+
+            case R.id.customize:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+
+
                 return true;
 
             default:

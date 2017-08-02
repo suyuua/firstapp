@@ -8,9 +8,14 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
-        android:id="@+id/myQuestion"
+        android:id="@+id/resetQuestion"
         android:icon="@mipmap/ic_launcher"
-        android:title="myQ"
+        android:title="reset"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/customize"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="customize"
         app:showAsAction="always"/>
 
 </menu>

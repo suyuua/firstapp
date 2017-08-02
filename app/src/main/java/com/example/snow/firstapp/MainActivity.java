@@ -122,7 +122,21 @@ public class MainActivity extends AppCompatActivity {
             case R.id.customize:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
-
+                if (toogle){
+                    submitQ.setVisibility(View.GONE);
+                    add.setVisibility(View.GONE);
+                    clear.setVisibility(View.GONE);
+                    editQuestion.setVisibility(View.GONE);
+                    addItems.setVisibility(View.GONE);
+                    toogle = false;
+                }else{
+                    submitQ.setVisibility(View.VISIBLE);
+                    add.setVisibility(View.VISIBLE);
+                    clear.setVisibility(View.VISIBLE);
+                    editQuestion.setVisibility(View.VISIBLE);
+                    addItems.setVisibility(View.VISIBLE);
+                    toogle = true;
+                }
 
                 return true;
 

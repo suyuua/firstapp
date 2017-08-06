@@ -19,15 +19,20 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout mLayout;
     private EditText mEditText;
     private Button ask,submitQ, add, clear;
-    TextView answer, question;
-    EditText editQuestion, addItems;
+    private TextView answer, question;
+    private EditText editQuestion, addItems;
+    private ArrayList items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init();
+        action();
+    }
 
-        final ArrayList items = new ArrayList();
+    public void init(){
+        items = new ArrayList();
         items.add("Yes");
         items.add("No");
 
@@ -39,15 +44,15 @@ public class MainActivity extends AppCompatActivity {
         clear = (Button) findViewById(R.id.clear);
         editQuestion = (EditText) findViewById(R.id.changeQuestion);
         addItems = (EditText) findViewById(R.id.items);
+    }
 
+    public void action(){
         ask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 answer.setText(items.get((new Random()).nextInt(items.size())).toString());
             }
         });
-
-
 
         submitQ.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 items.add(item);
             }
         });
-
 
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,16 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 items.add("No");
             }
         });
-
-
-
-
-
     }
-
-
-
-
 
 
 
@@ -114,14 +107,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.resetQuestion:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
                 question = (TextView) findViewById(R.id.question);
                 return true;
-
             case R.id.customize:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
                 if (toogle){
                     submitQ.setVisibility(View.GONE);
                     add.setVisibility(View.GONE);

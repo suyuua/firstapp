@@ -1,21 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.snow.firstapp.MainActivity">
+    tools:context="com.example.snow.firstapp.history">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
-        android:id="@+id/customize"
-        android:icon="@mipmap/ic_launcher_round"
-        android:title="customize"
-        app:showAsAction="always"/>
-    <item
         android:id="@+id/history"
         android:icon="@mipmap/ic_launcher"
         android:title="reset"
         app:showAsAction="always"/>
+
 
 </menu>

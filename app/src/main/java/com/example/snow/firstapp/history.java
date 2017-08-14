@@ -53,6 +53,7 @@ public class history extends AppCompatActivity{
         h5 = (Button) findViewById(R.id.h5);
         h6 = (Button) findViewById(R.id.h6);
         h7 = (Button) findViewById(R.id.h7);
+        
         h8 = (Button) findViewById(R.id.h8);
 
         historyButtons = new Button[]{h1,h2,h3,h4,h5,h6,h7,h8};

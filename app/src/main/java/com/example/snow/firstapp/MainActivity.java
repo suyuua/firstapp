@@ -1,7 +1,11 @@
 package com.example.snow.firstapp;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -18,10 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout mLayout;
     private EditText mEditText;
-    private Button ask,submitQ, add, clear;
+    private Button ask,submitQ, add, clear, history;
     private TextView answer, question;
     private EditText editQuestion, addItems;
     private ArrayList items;
+    SQLiteHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
         action();
+
     }
 
     public void init(){
@@ -44,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         clear = (Button) findViewById(R.id.clear);
         editQuestion = (EditText) findViewById(R.id.changeQuestion);
         addItems = (EditText) findViewById(R.id.items);
+        history = (Button)findViewById(R.id.addHistory);
+
+        myDb = new SQLiteHelper(this);
     }
 
     public void action(){
@@ -78,6 +88,19 @@ public class MainActivity extends AppCompatActivity {
                 items.add("No");
             }
         });
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cursor res=myDb.getallQuestions();
+                if (res.getCount() == 8) {
+                    myDb.deleteFirst();
+                }
+
+                String listString = TextUtils.join(",", items);
+                myDb.insertQuestion(question.getText().toString(), listString);
+                Toast.makeText(MainActivity.this,"Saved",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 
@@ -104,10 +127,12 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.action_settings:
                 // User chose the "Settings" item, show the app settings UI...
+                myDb.deleteDB();
                 return true;
 
-            case R.id.resetQuestion:
-                question = (TextView) findViewById(R.id.question);
+            case R.id.history:
+                Intent intent = new Intent(MainActivity.this, history.class);
+                startActivity(intent);
                 return true;
             case R.id.customize:
                 if (toogle){

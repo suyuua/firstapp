@@ -37,11 +37,84 @@ public class history extends AppCompatActivity{
         h1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                question.setText("meow");
-                finish();
-
+                Intent intent = new Intent();
+                String data = h1.getText().toString();
+                intent.putExtra("qNa", data);
+                setResult(RESULT_OK, intent);
+                if (!data.equals("?")) finish();
             }
         });
+        h2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                String data = h2.getText().toString();
+                intent.putExtra("qNa", data);
+                setResult(RESULT_OK, intent);
+                if (!data.equals("?")) finish();
+            }
+        });
+        h3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                String data = h3.getText().toString();
+                intent.putExtra("qNa", data);
+                setResult(RESULT_OK, intent);
+                if (!data.equals("?")) finish();
+            }
+        });
+        h4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                String data = h4.getText().toString();
+                intent.putExtra("qNa", data);
+                setResult(RESULT_OK, intent);
+                if (!data.equals("?")) finish();
+            }
+        });
+        h5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                String data = h5.getText().toString();
+                intent.putExtra("qNa", data);
+                setResult(RESULT_OK, intent);
+                if (!data.equals("?")) finish();
+            }
+        });
+        h6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                String data = h6.getText().toString();
+                intent.putExtra("qNa", data);
+                setResult(RESULT_OK, intent);
+                if (!data.equals("?")) finish();
+            }
+        });
+        h7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                String data = h7.getText().toString();
+                intent.putExtra("qNa", data);
+                setResult(RESULT_OK, intent);
+                if (!data.equals("?")) finish();
+            }
+        });
+        h8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                String data = h8.getText().toString();
+                intent.putExtra("qNa", data);
+                setResult(RESULT_OK, intent);
+                if (!data.equals("?")) finish();
+            }
+        });
+
     }
 
 
@@ -53,7 +126,6 @@ public class history extends AppCompatActivity{
         h5 = (Button) findViewById(R.id.h5);
         h6 = (Button) findViewById(R.id.h6);
         h7 = (Button) findViewById(R.id.h7);
-        
         h8 = (Button) findViewById(R.id.h8);
 
         historyButtons = new Button[]{h1,h2,h3,h4,h5,h6,h7,h8};
@@ -67,11 +139,6 @@ public class history extends AppCompatActivity{
         myDb = new SQLiteHelper(this);
         Cursor res=myDb.getallQuestions();
         if (res.getCount() == 0) return;
-       // int i=0;
-       // while (res.moveToNext()){
-       //     historyButtons[i].setText(res.getString(1)+"\n"+res.getString(2));
-        //    i++;
-        //}
         res.moveToLast();
         int i= 0;
         do{

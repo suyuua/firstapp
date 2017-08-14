@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.history:
                 Intent intent = new Intent(MainActivity.this, history.class);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
                 return true;
             case R.id.customize:
                 if (toogle){
@@ -160,5 +160,26 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // check that it is the SecondActivity with an OK result
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+
+                // get String data from Intent
+                String returnString[] = data.getStringExtra("qNa").split("\\n|\\,");
+
+                // set text view with string
+
+                question.setText(returnString[0]);
+                items.clear();
+                for (int i = 1 ; i< returnString.length;i++){
+                    items.add(returnString[i]);
+                }
+            }
+        }
     }
 }
